@@ -80,7 +80,6 @@ public class Client {
                             client.user = response.getAccount();
                             Thread t = new Thread(new Receiver(client.user.getUsername()));
                             t.start();
-//                            client.receiving.add(response.getFileID());
                         }
                     } catch (RemoteException e) {
                         e.printStackTrace();
@@ -98,6 +97,8 @@ public class Client {
                         } else {
                             System.out.println("here is account for " + response.getAccount().getUsername());
                             client.user = response.getAccount();
+                            Thread t = new Thread(new Receiver(client.user.getUsername()));
+                            t.start();
                         }
                     } catch (RemoteException e) {
                         e.printStackTrace();
@@ -124,9 +125,6 @@ public class Client {
                         System.out.println("null");
                     }else {
                         file.printInfo();
-//                        Thread t = new Thread(new Receiver("file" + file.getId()));
-//                        t.start();
-//                        client.receiving.add(file.getId());
                     }
                 }
             }
